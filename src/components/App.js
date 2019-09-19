@@ -9,15 +9,26 @@ class App extends Component {
     super(props)
   
     this.state = {
-      hogs: hogs
+      hogs: hogs,
+      filtered: false
     }
   }
   
+  filterHogs = (e) => {
+    return this.state.hogs.filter(h => h.greased)
+}
+
+  greasedPigs = () => {
+    this.setState({
+      filtered: !this.state.filtered
+    })
+  }
+
   render() {
     return (
       <div className="App">
-          <Nav /> 
-          <HogContainer hogs={this.state.hogs}/>
+          <Nav filterPigs={this.greasedPigs}/> 
+          {this.state.filtered ? <HogContainer hogs={this.filterHogs()}/> : <HogContainer hogs={this.state.hogs}/>}
       </div>
     )
   }

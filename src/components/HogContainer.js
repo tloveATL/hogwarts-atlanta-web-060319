@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import HogCard from './HogCard'
 
 export class HogContainer extends Component {
+
+    
+
     render() {
         return (
             <div className="ui grid container">
